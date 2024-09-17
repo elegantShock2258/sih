@@ -10,12 +10,13 @@ import {
   useNavBarAnimation,
   useTitleImageAnimated,
 } from "@/components/Cards/hooks";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import FadeInCard from "@/components/Cards/FadeInCard/FadeInCard";
 import ImageCard from "@/components/Cards/ImageCard/ImageCard";
 import { motion, useAnimate } from "framer-motion";
-
+import Image from "next/image";
+import star from "@/assets/star.svg";
 export default function Page() {
   let { navbarScope, navBarAnmate, navBarChildrenScope, navBarAnimation } =
     useNavBarAnimation();
@@ -34,8 +35,8 @@ export default function Page() {
     imageCardTextChildrenScope,
     imageCardTextScope,
   } = useImageCardTextLanding();
-  let [fgOpacity, setFgOpacity] = useState(0);
   let [fgScope, fgAnimate] = useAnimate();
+
   useEffect(() => {
     (async () => {
       await titleImageAnimation(); // WAIT for the title image animation
@@ -47,49 +48,64 @@ export default function Page() {
       );
       await landingCardAnimation(); // WAIT for everything else
       // all animations are done
+
+      landingCardScope.current.width =
+        scope.current.getBoundingClientRect().left;
     })();
   });
   return (
-    <div className="flex flex-col h-full w-full">
-      <div className="nav">
-        <NavBar childrenScope={navBarChildrenScope} scope={navbarScope} />
-      </div>
-      <div className={styles.parent}>
-        <div className={styles.bg}>
-          <div className="flex w-full h-full flex-col">
-            <AnimatedTitleImageCard
-              scope={scope}
-              src={Chandrayan}
-              height={350}
-              width={350}
-              alt="mkc"
-            />
-          </div>
+    <div className={styles.parent}>
+      <div className={styles.bg}>
+        <div className="flex w-full h-full items-center justify-center">
+          <AnimatedTitleImageCard
+            scope={scope}
+            src={Chandrayan}
+            height={350}
+            width={350}
+            alt="mkc"
+          />
         </div>
-        <motion.div
-          className={styles.fg}
-          initial={{ opacity: 0 }}
-          ref={fgScope}
-        >
+      </div>
+      <motion.div className={styles.fg} initial={{ opacity: 0 }} ref={fgScope}>
+        <div className="flex flex-col h-full w-full gap-[1%]">
+          <div className="nav">
+            <NavBar childrenScope={navBarChildrenScope} scope={navbarScope} />
+          </div>
           <div className={styles.imageParent}>
             <FadeInCard
+              scope={landingCardScope}
               parentClassName={styles.titleCard}
               childrenScope={landingCardChildrenScope}
-              scope={landingCardScope}
               initial={{ scaleY: 0 }}
             >
-              <>hu</>
+              <div className="flex flex-col items-end gap-10">
+                <Image src={star} width={70} height={70} alt="star" />
+                <div className={styles.text}>
+                  <div className="flex flex-col">
+                    <> Innovating Low Light Image </>
+                    <div className="flex gap-3">
+                      <span className={styles.italics}>Enhancement</span>{" "}
+                      {/* TODO: use shadcn hovercard to show defination of PSR. */}
+                      for PSR
+                    </div>
+                    <> Regions of Lunar Crater </>
+                  </div>
+                </div>
+              </div>
             </FadeInCard>
-            <ImageCard
-              initial={{ scale: 1, opacity: 0 }}
-              src={Chandrayan}
-              height={262.5}
-              width={262.5}
-              alt="mkc"
-            />
+            <div className={styles.titleCardParent}>
+              {/* this is to make sure that the heights of the conatainer and image are the same, completly under the card. */}
+              <ImageCard
+                initial={{ scale: 1, opacity: 0 }}
+                src={Chandrayan}
+                height={315}
+                width={315}
+                alt="mkc"
+              />
+            </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 }

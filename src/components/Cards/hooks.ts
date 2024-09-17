@@ -35,16 +35,16 @@ export function useFadeInCardLanding(scale: number) {
   return { scope, animate, fadeInAnimation, childrenScope, childrenAnimate };
 }
 export function useTitleImageAnimated() {
-  const [scope, animate] = useAnimate();
+  const [scope, animate] = useAnimate<HTMLDivElement>();
   let titleImageAnimation = async () => {
     await animate(
       scope.current,
-      { scale: 0.75 },
+      { scale: 0.9 },
       { type: "tween", duration: 0.8 },
     );
     await animate(
       scope.current,
-      { x: "16%", y: "-11%" },
+      { x: "20%", y: "-43%" },
       { type: "tween", duration: 1 },
     );
   };

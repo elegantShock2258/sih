@@ -22,7 +22,7 @@ export default function AnimatedTitleImageCard({
     <>
       <motion.div
         ref={scope}
-        initial={{ alignSelf: "center", scale: 1.2 }}
+        initial={{ scale: 1.5 }}
         className={styles.titleImageCard}
       >
         <ImageCard

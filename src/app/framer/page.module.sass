@@ -10,19 +10,40 @@
     pointer-events: none
 .fg
     z-index: 2
-    padding: 7px
 
-    display: flex
 .titleCard
+    display: flex
+
     background-color: #3D3137
-    width: 100%
+
     border-radius: 11px
+    width: 100%
+    padding: 10px
+
+    grid-area: 1/1
+.titleCardParent
+    grid-area: 1/1
+
+.text
+    padding: 20px 30px
+    width: 100%
+    color: #FFF
+    font-family: Inter
+    font-size: 56px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    letter-spacing: -3.92px
+    .italics
+        color: #FFF
+        font-family: Inter
+        font-size: 56px
+        font-style: italic
+        font-weight: 300
+        line-height: normal
+        letter-spacing: -3.92px
+        opacity: 0.79
 .imageParent
     display: grid
-    grid-auto-rows: 1fr
-
-    grid-template-columns: repeat(2, 1fr)
-    column-gap: 14px
-
-    height: 41%
-    width: 90%
+    height: fit-content
+    width: 45% //TODO: make media queries so size doesnt fuck up.
