@@ -23,8 +23,7 @@
 
 .titleCard {
   background-color: #3D3137;
-  width: 70%;
-  height: 100%;
+  width: 100%;
   border-radius: 11px;
 }
 
@@ -32,7 +31,8 @@
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: 14px;
+       column-gap: 14px;
   height: 41%;
-  width: 70%;
-  background-color: blue;
+  width: 90%;
 }/*# sourceMappingURL=page.module.css.map */

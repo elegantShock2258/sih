@@ -10,10 +10,11 @@ import {
   useNavBarAnimation,
   useTitleImageAnimated,
 } from "@/components/Cards/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import FadeInCard from "@/components/Cards/FadeInCard/FadeInCard";
 import ImageCard from "@/components/Cards/ImageCard/ImageCard";
+import { motion, useAnimate } from "framer-motion";
 
 export default function Page() {
   let { navbarScope, navBarAnmate, navBarChildrenScope, navBarAnimation } =
@@ -33,12 +34,18 @@ export default function Page() {
     imageCardTextChildrenScope,
     imageCardTextScope,
   } = useImageCardTextLanding();
+  let [fgOpacity, setFgOpacity] = useState(0);
+  let [fgScope, fgAnimate] = useAnimate();
   useEffect(() => {
     (async () => {
-      // await titleImageAnimation(); // WAIT for the title image animation
+      await titleImageAnimation(); // WAIT for the title image animation
       navBarAnimation(); // DO NOT wait for navbar animation to finish
-      // await landingCardAnimation(); // WAIT for everything else
-      imageCardTextAnimation();
+      await fgAnimate(
+        fgScope.current,
+        { opacity: 1 },
+        { duration: 0, type: "tween" },
+      );
+      await landingCardAnimation(); // WAIT for everything else
       // all animations are done
     })();
   });
@@ -49,28 +56,9 @@ export default function Page() {
       </div>
       <div className={styles.parent}>
         <div className={styles.bg}>
-          <div className="flex w-full h-full flex-col bg-red-700">
-            {/* <AnimatedTitleImageCard
-                scope={scope}
-                src={Chandrayan}
-                height={350}
-                width={350}
-                alt="mkc"
-              /> */}
-          </div>
-        </div>
-        <div className={styles.fg}>
-          <div className={styles.imageParent}>
-            <FadeInCard
-              parentClassName={styles.titleCard}
-              childrenScope={imageCardTextChildrenScope}
-              scope={imageCardTextScope}
-              initial={{ scaleY: 0 }}
-            >
-              <>hu</>
-            </FadeInCard>
-            <ImageCard
-              initial={{ scale: 0.75 }}
+          <div className="flex w-full h-full flex-col">
+            <AnimatedTitleImageCard
+              scope={scope}
               src={Chandrayan}
               height={350}
               width={350}
@@ -78,6 +66,29 @@ export default function Page() {
             />
           </div>
         </div>
+        <motion.div
+          className={styles.fg}
+          initial={{ opacity: 0 }}
+          ref={fgScope}
+        >
+          <div className={styles.imageParent}>
+            <FadeInCard
+              parentClassName={styles.titleCard}
+              childrenScope={landingCardChildrenScope}
+              scope={landingCardScope}
+              initial={{ scaleY: 0 }}
+            >
+              <>hu</>
+            </FadeInCard>
+            <ImageCard
+              initial={{ scale: 1, opacity: 0 }}
+              src={Chandrayan}
+              height={262.5}
+              width={262.5}
+              alt="mkc"
+            />
+          </div>
+        </motion.div>
       </div>
     </div>
   );

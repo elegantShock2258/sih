@@ -74,7 +74,7 @@ export function useLandingCardsAnimation() {
 
 export function useImageCardTextLanding() {
   let { scope, animate, fadeInAnimation, childrenScope } =
-    useFadeInCardLanding(0.75);
+    useFadeInCardLanding(1);
   return {
     imageCardTextScope: scope,
     imageCardTextAnimate: animate,
