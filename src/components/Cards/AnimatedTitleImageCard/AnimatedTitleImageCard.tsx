@@ -21,11 +21,17 @@ export default function AnimatedTitleImageCard({
   return (
     <>
       <motion.div
-        initial={{ y: "-15%" }}
         ref={scope}
+        initial={{ alignSelf: "center", scale: 1.2 }}
         className={styles.titleImageCard}
       >
-        <ImageCard src={src} height={height} width={width} alt={alt} />
+        <ImageCard
+          src={src}
+          height={height}
+          width={width}
+          alt={alt}
+          initial={false}
+        />
       </motion.div>
     </>
   );

@@ -17,13 +17,13 @@ export function useFadeInCard() {
   };
   return { scope, animate, fadeInAnimation, childrenScope, childrenAnimate };
 }
-export function useFadeInCardLanding() {
+export function useFadeInCardLanding(scale: number) {
   const [scope, animate] = useAnimate();
   const [childrenScope, childrenAnimate] = useAnimate();
   let fadeInAnimation = async () => {
     await animate(
       scope.current,
-      { scaleY: 1 },
+      { scaleY: scale },
       { type: "tween", duration: 1.5, ease: "easeInOut" },
     );
     await childrenAnimate(
@@ -44,7 +44,7 @@ export function useTitleImageAnimated() {
     );
     await animate(
       scope.current,
-      { x: "14%", y: "-35%" },
+      { x: "16%", y: "-11%" },
       { type: "tween", duration: 1 },
     );
   };
@@ -63,11 +63,22 @@ export function useNavBarAnimation() {
 
 export function useLandingCardsAnimation() {
   let { scope, animate, fadeInAnimation, childrenScope } =
-    useFadeInCardLanding();
+    useFadeInCardLanding(1);
   return {
     landingCardScope: scope,
     landingCardAnimate: animate,
     landingCardAnimation: fadeInAnimation,
     landingCardChildrenScope: childrenScope,
+  };
+}
+
+export function useImageCardTextLanding() {
+  let { scope, animate, fadeInAnimation, childrenScope } =
+    useFadeInCardLanding(0.75);
+  return {
+    imageCardTextScope: scope,
+    imageCardTextAnimate: animate,
+    imageCardTextAnimation: fadeInAnimation,
+    imageCardTextChildrenScope: childrenScope,
   };
 }
