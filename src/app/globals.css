@@ -19,4 +19,10 @@ html, body {
 
 * {
   box-sizing: inherit;
-}/*# sourceMappingURL=globals.css.map */
+}
+
+body {
+  padding: 10px;
+}
+
+/*# sourceMappingURL=globals.css.map */

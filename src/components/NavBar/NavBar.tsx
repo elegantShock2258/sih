@@ -18,6 +18,7 @@ export default function NavBar({
         parentClassName={styles.navbarParent}
         scope={scope}
         childrenScope={childrenScope}
+        initial={{ scaleX: 0 }}
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex gap-[15px]">

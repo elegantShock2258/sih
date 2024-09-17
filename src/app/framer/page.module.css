@@ -1,0 +1,31 @@
+.parent, .bg, .fg {
+  width: 100%;
+  height: 100%;
+}
+
+.parent {
+  display: grid;
+}
+
+.bg, .fg {
+  grid-area: 1/1;
+}
+
+.bg {
+  pointer-events: none;
+}
+
+.fg {
+  z-index: 2;
+  padding: 7px;
+  display: flex;
+}
+
+.titleCard {
+  background-color: #3D3137;
+  width: 43%;
+  height: 52%;
+  border-radius: 11px;
+}
+
+/*# sourceMappingURL=page.module.css.map */
