@@ -19,7 +19,13 @@ export default function ImageCard({
   return (
     <motion.div initial={initial}>
       <Card>
-        <Image src={src} width={width} height={height} alt={alt} />
+        <Image
+          src={src.src}
+          width={width}
+          height={height}
+          alt={alt}
+          layout="fixed"
+        />
       </Card>
     </motion.div>
   );

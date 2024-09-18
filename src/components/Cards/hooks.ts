@@ -44,7 +44,7 @@ export function useTitleImageAnimated() {
     );
     await animate(
       scope.current,
-      { x: "20%", y: "-43%" },
+      { x: "0%", y: "0%" },
       { type: "tween", duration: 1 },
     );
   };

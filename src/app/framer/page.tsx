@@ -41,32 +41,16 @@ export default function Page() {
     (async () => {
       await titleImageAnimation(); // WAIT for the title image animation
       navBarAnimation(); // DO NOT wait for navbar animation to finish
-      await fgAnimate(
-        fgScope.current,
-        { opacity: 1 },
-        { duration: 0, type: "tween" },
-      );
       await landingCardAnimation(); // WAIT for everything else
       // all animations are done
-
-      landingCardScope.current.width =
-        scope.current.getBoundingClientRect().left;
     })();
   });
   return (
     <div className={styles.parent}>
       <div className={styles.bg}>
-        <div className="flex w-full h-full items-center justify-center">
-          <AnimatedTitleImageCard
-            scope={scope}
-            src={Chandrayan}
-            height={350}
-            width={350}
-            alt="mkc"
-          />
-        </div>
+        <div className="flex w-full h-full items-center justify-center"></div>
       </div>
-      <motion.div className={styles.fg} initial={{ opacity: 0 }} ref={fgScope}>
+      <motion.div className={styles.fg}>
         <div className="flex flex-col h-full w-full gap-[1%]">
           <div className="nav">
             <NavBar childrenScope={navBarChildrenScope} scope={navbarScope} />
@@ -94,12 +78,17 @@ export default function Page() {
               </div>
             </FadeInCard>
             <div className={styles.titleCardParent}>
-              {/* this is to make sure that the heights of the conatainer and image are the same, completly under the card. */}
-              <ImageCard
-                initial={{ scale: 1, opacity: 0 }}
+              <AnimatedTitleImageCard
+                initial={{
+                  scale: 1.2,
+                  opacity: 1,
+                  x: "-15vw",
+                  y: "15vh",
+                }}
                 src={Chandrayan}
-                height={315}
-                width={315}
+                scope={scope}
+                height={500}
+                width={500}
                 alt="mkc"
               />
             </div>
