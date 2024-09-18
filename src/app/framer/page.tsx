@@ -51,16 +51,17 @@ export default function Page() {
         <div className="flex w-full h-full items-center justify-center"></div>
       </div>
       <motion.div className={styles.fg}>
-        <div className="flex flex-col h-full w-full gap-[1%]">
+        <div className="flex flex-col h-full w-full">
           <div className="nav">
             <NavBar childrenScope={navBarChildrenScope} scope={navbarScope} />
           </div>
           <div className={styles.imageParent}>
+            {/* TODO: fix wrong sizing of the card with the image on different screen sizes */}
             <FadeInCard
               scope={landingCardScope}
               parentClassName={styles.titleCard}
               childrenScope={landingCardChildrenScope}
-              initial={{ scaleY: 0 }}
+              initial={{ scaleY: 0, scaleX: 0 }}
             >
               <div className="flex flex-col items-end gap-10">
                 <Image src={star} width={70} height={70} alt="star" />
@@ -80,15 +81,16 @@ export default function Page() {
             <div className={styles.titleCardParent}>
               <AnimatedTitleImageCard
                 initial={{
-                  scale: 1.2,
+                  scale: 1.6,
                   opacity: 1,
-                  x: "-15vw",
-                  y: "15vh",
+                  x: "-8vw", // TODO: figure out data to put this in the center
+                  //for different screen sizes
+                  y: "13vh",
                 }}
                 src={Chandrayan}
                 scope={scope}
-                height={500}
-                width={500}
+                height={450}
+                width={450}
                 alt="mkc"
               />
             </div>

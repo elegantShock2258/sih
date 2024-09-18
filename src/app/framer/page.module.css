@@ -23,12 +23,14 @@
   display: flex;
   background-color: #3D3137;
   border-radius: 11px;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
   padding: 10px;
 }
 
 .text {
-  padding: 20px 30px;
+  padding: 0px 30px;
   width: 100%;
   color: #FFF;
   font-family: Inter;
@@ -51,11 +53,8 @@
 
 .imageParent {
   display: flex;
+  align-items: center;
   height: -moz-fit-content;
   height: fit-content;
   width: 70%;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(2, 1fr);
 }/*# sourceMappingURL=page.module.css.map */

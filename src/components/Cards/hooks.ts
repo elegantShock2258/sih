@@ -6,7 +6,7 @@ export function useFadeInCard() {
   let fadeInAnimation = async () => {
     await animate(
       scope.current,
-      { scaleX: 1 },
+      { scaleX: 1, scaleY: 1 },
       { type: "tween", duration: 1.5, ease: "easeInOut" },
     );
     await childrenAnimate(
@@ -23,7 +23,7 @@ export function useFadeInCardLanding(scale: number) {
   let fadeInAnimation = async () => {
     await animate(
       scope.current,
-      { scaleY: scale },
+      { scaleY: 1, scaleX: 1 },
       { type: "tween", duration: 1.5, ease: "easeInOut" },
     );
     await childrenAnimate(
