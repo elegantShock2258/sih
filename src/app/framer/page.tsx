@@ -52,7 +52,7 @@ export default function Page() {
       </div>
       <motion.div className={styles.fg}>
         <div className="flex flex-col h-full w-full">
-          <div className="nav">
+          <div>
             <NavBar childrenScope={navBarChildrenScope} scope={navbarScope} />
           </div>
           <div className={styles.imageParent}>
@@ -83,8 +83,7 @@ export default function Page() {
                 initial={{
                   scale: 1.6,
                   opacity: 1,
-                  x: "-8vw", // TODO: figure out data to put this in the center
-                  //for different screen sizes
+                  x: "-8vw", // TODO: figure out data to put this in the center for different screen sizes
                   y: "13vh",
                 }}
                 src={Chandrayan}
