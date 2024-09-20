@@ -71,14 +71,3 @@ export function useLandingCardsAnimation() {
     landingCardChildrenScope: childrenScope,
   };
 }
-
-export function useImageCardTextLanding() {
-  let { scope, animate, fadeInAnimation, childrenScope } =
-    useFadeInCardLanding(1);
-  return {
-    imageCardTextScope: scope,
-    imageCardTextAnimate: animate,
-    imageCardTextAnimation: fadeInAnimation,
-    imageCardTextChildrenScope: childrenScope,
-  };
-}

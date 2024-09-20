@@ -9,19 +9,21 @@ import {
 } from "framer-motion";
 import { ReactChild, useEffect } from "react";
 
+export type FadeInCardProps = {
+  children: JSX.Element;
+  childrenScope: AnimationScope<any>;
+  scope: AnimationScope<any>;
+  parentClassName: string;
+  initial: VariantLabels | Target | boolean;
+};
+
 export default function FadeInCard({
   children,
   scope,
   childrenScope,
   parentClassName,
   initial,
-}: {
-  children: JSX.Element;
-  childrenScope: AnimationScope<any>;
-  scope: AnimationScope<any>;
-  parentClassName: string;
-  initial: VariantLabels | Target | boolean;
-}) {
+}: FadeInCardProps) {
   // the card needs to be wrapped into a container element which has the exact width and height
   // of the ui element required, since we're changing the width and height of the node, there's nothing
   // fixed.

@@ -11,21 +11,15 @@ export default function ImageCard({
   initial,
 }: {
   src: StaticImageData;
-  width: number;
-  height: number;
+  width: number | `${number}%`;
+  height: number | `${number}%`;
   alt: string;
   initial: VariantLabels | Target | boolean;
 }) {
   return (
     <motion.div initial={initial}>
       <Card>
-        <Image
-          src={src.src}
-          width={width}
-          height={height}
-          alt={alt}
-          layout="fixed"
-        />
+        <img src={src.src} width={width} height={height} alt={alt} />
       </Card>
     </motion.div>
   );
