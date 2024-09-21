@@ -1,6 +1,6 @@
 import Image from "next/image";
-import FadeInCard, { FadeInCardProps } from "../Cards/FadeInCard/FadeInCard";
-import ImageCard from "../Cards/ImageCard/ImageCard";
+import FadeInCard, { FadeInCardProps } from "../FadeInCard/FadeInCard";
+import ImageCard from "../ImageCard/ImageCard";
 
 import styles from "./team.module.css";
 import arrow from "@/assets/arrow.png";
@@ -53,15 +53,20 @@ export default function Team({
           <Image src={arrow} height={20} width={20} alt="" />
         </div>
         <img src={moon.src} alt="moon" width="100%" />
-        <div className={`flex flex-col items-center w-full ${styles.rolls}`}>
+        <div
+          className={`flex flex-col h-full flex-1 items-center justify-around w-full ${styles.rolls}`}
+        >
           {data.map((item) => (
-            <div
-              className={`w-full flex gap-5 justify-between ${styles.item}`}
-              key={item.roll}
-            >
-              <div>{item.name}</div>
-              <div>{item.roll}</div>
-            </div>
+            <>
+              <div
+                className={`w-full flex justify-between ${styles.item}`}
+                key={item.roll}
+              >
+                <div>{item.name}</div>
+                <div>{item.roll}</div>
+              </div>
+              <hr color="#705463" />
+            </>
           ))}
         </div>
       </div>

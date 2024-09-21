@@ -12,11 +12,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import star from "@/assets/star.svg";
-import Team from "@/components/Team/team";
+import Team from "@/components/Cards/Team/team";
 import FadeInCard from "@/components/Cards/FadeInCard/FadeInCard";
 import Chandrayan from "@/assets/chandrayan.png";
 
 import styles from "./page.module.css";
+import SIH from "@/components/Cards/SIH/SIH";
 export default function Page() {
   let { navbarScope, navBarChildrenScope, navBarAnimation } =
     useNavBarAnimation();
@@ -24,13 +25,17 @@ export default function Page() {
 
   let titleCard = useLandingCardsAnimation();
   let teamCard = useLandingCardsAnimation();
+  let sih = useLandingCardsAnimation();
 
   useEffect(() => {
     (async () => {
       await titleImageAnimation(); // WAIT for the title image animation
       navBarAnimation(); // DO NOT wait for navbar animation to finish
+      // do all cards animation
+      // if you await for only one animation, then everything else is parallel.
       teamCard.landingCardAnimation();
-      await titleCard.landingCardAnimation(); // WAIT for everything else
+      sih.landingCardAnimation();
+      await titleCard.landingCardAnimation(); // wait for all cards to complete
       // all animations are done
     })();
   });
@@ -84,14 +89,25 @@ export default function Page() {
                 />
               </div>
             </div>
-            <Team
-              childrenScope={teamCard.landingCardChildrenScope}
-              scope={teamCard.landingCardScope}
-              parentClassName={styles.team}
-              initial={""}
-            >
-              <></>
-            </Team>
+            <div className="flex flex-col justify-between gap-5">
+              <Team
+                childrenScope={teamCard.landingCardChildrenScope}
+                scope={teamCard.landingCardScope}
+                parentClassName={styles.team}
+                initial={{ scaleY: 0, scaleX: 0 }}
+              >
+                <></>
+              </Team>
+              <SIH
+                childrenScope={sih.landingCardChildrenScope}
+                scope={sih.landingCardScope}
+                parentClassName={styles.sih}
+                initial={{ scaleX: 0 }}
+                problemStatement={1732}
+              >
+                <></>
+              </SIH>
+            </div>
           </div>
         </div>
       </motion.div>

@@ -62,12 +62,21 @@
 
 .team {
   margin-top: 16px;
-  border-radius: 22px;
+  border-radius: 11px;
+  transform-origin: top left;
   background-color: #3D3137;
+  flex: 1;
+  display: flex;
+}
+
+.sih {
+  background-color: #3D3137;
+  border-radius: 11px;
 }
 
 .sec1 {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: 70vw 28vw;
+  height: 100%;
 }/*# sourceMappingURL=page.module.css.map */
