@@ -29,7 +29,11 @@ export default function FadeInCard({
   // fixed.
 
   return (
-    <motion.div className={parentClassName} initial={initial} ref={scope}>
+    <motion.div
+      className={`rounded-[11px] bg-[#3D3137] ${parentClassName}`}
+      initial={initial}
+      ref={scope}
+    >
       <motion.div
         ref={childrenScope}
         initial={{ opacity: 0 }}

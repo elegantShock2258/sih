@@ -57,16 +57,12 @@ export default function Team({
           className={`flex flex-col h-full flex-1 items-center justify-around w-full ${styles.rolls}`}
         >
           {data.map((item) => (
-            <>
-              <div
-                className={`w-full flex justify-between ${styles.item}`}
-                key={item.roll}
-              >
+            <div key={item.roll} className="w-full">
+              <div className={`w-full flex justify-between ${styles.item}`}>
                 <div>{item.name}</div>
                 <div>{item.roll}</div>
               </div>
-              <hr color="#705463" />
-            </>
+            </div>
           ))}
         </div>
       </div>
